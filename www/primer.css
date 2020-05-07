@@ -1,0 +1,111 @@
+.navbar-light .navbar-nav .nav-link {
+    color: rgb(0,0,0);
+}
+.navbar-dark {
+    background-color: #1DA1F2;
+    height: 60px;
+}
+.navbar-nav>.user-menu .user-image {
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+}
+.bootstrap-select .dropdown-toggle .filter-option-inner-inner {
+    color: #273443;
+    background-color: #1DA1F2;
+}
+.bootstrap-select>.dropdown-toggle {
+    background-color: #1DA1F2;
+    color: #273443;
+    border-color: #1DA1F2;
+}
+.dropdown-menu.show {
+    display: block;
+    background-color: #1DA1F2;
+    color: #273443;
+}
+.dropdown-item.active, .dropdown-item:active {
+    color: #1DA1F2;
+    text-decoration: none;
+    background-color: #273443;
+}
+.bs-searchbox .form-control {
+    background-color: #273443;
+    border-color: #1DA1F2;
+    color: #1DA1F2;
+}
+.btn-light:not(:disabled):not(.disabled):active, .btn-light:not(:disabled):not(.disabled).active, .show>.btn-light.dropdown-toggle {
+    color: #273443;
+    background-color: #1DA1F2;
+    border-color: #1DA1F2;
+}
+.bootstrap-select .no-results {
+    background: #1DA1F2;
+    color: #273443;
+}
+.form-control {
+    color: #273443;
+    background-color: #1DA1F2;
+    border: 1px solid #1DA1F2;
+}
+.dropdown-menu {
+    color: #1DA1F2;
+    background-color: #273443;
+    border: 1px solid #273443;
+}
+.datepicker table tr td.active.active, .datepicker table tr td.active.highlighted.active, .datepicker table tr td.active.highlighted:active, .datepicker table tr td.active:active {
+    color: #273443;
+    background-color: #1DA1F2;
+    border-color: #1DA1F2;
+}
+.datepicker table tr td span.active.active, .datepicker table tr td span.active.disabled.active, .datepicker table tr td span.active.disabled:active, .datepicker table tr td span.active.disabled:hover.active, .datepicker table tr td span.active.disabled:hover:active, .datepicker table tr td span.active:active, .datepicker table tr td span.active:hover.active, .datepicker table tr td span.active:hover:active {
+    color: #273443;
+    background-color: #1DA1F2;
+    border-color: #1DA1F2;
+}
+.input-daterange .input-group-addon {
+    text-shadow: 0 1px 0 #273443;
+    color: #273443;
+    background-color: #273443;
+}
+label:not(.form-check-label):not(.custom-file-label) {
+    color: #1DA1F2;
+    margin-top: 25px;
+}
+navbar-dark .navbar-nav .nav-link {
+    color: #1DA1F2;
+    font-weight: 600;
+}
+.dropdown-menu {
+    border: 1px solid #1Da1F2;
+}
+.wrapper .content-wrapper {
+    min-height: calc(100vh - calc(3.5rem + 1px) - calc(3.5rem + 1px));
+    background-color: #273443;
+}
+button:not(:disabled), [type="button"]:not(:disabled), [type="reset"]:not(:disabled), [type="submit"]:not(:disabled) {
+    cursor: pointer;
+    background-color: #1DA1F2;
+    color: #273443;
+}
+.bttn-fill.bttn-default:before {
+    background: #273443;
+    color: #1DA1F2;
+}
+.bttn-fill.bttn-default {
+    background: #1DA1F2;
+    margin-top: 49px;
+}
+.small-box>.inner {
+    padding: 10px;
+    font-size: 30px;
+}
+.small-box h3, .small-box p {
+    z-index: 5;
+    font-weight: 600;
+    font-size: large;
+}
+.card-danger:not(.card-outline)>.card-header {
+    background-color: #1DA1F2;
+    border-bottom: 0;
+}
