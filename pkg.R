@@ -23,7 +23,6 @@ library(viridis)
 library(corrly)
 library(bs4Dash)
 library(shinyWidgets)
-library(shiny)
 library(grillade)
 library(echarts4r)
 
