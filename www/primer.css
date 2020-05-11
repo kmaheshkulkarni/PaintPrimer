@@ -81,7 +81,7 @@ navbar-dark .navbar-nav .nav-link {
 }
 .wrapper .content-wrapper {
     min-height: calc(100vh - calc(3.5rem + 1px) - calc(3.5rem + 1px));
-    background-color: #195030;
+    background-color: #ffffff;
 }
 button:not(:disabled), [type="button"]:not(:disabled), [type="reset"]:not(:disabled), [type="submit"]:not(:disabled) {
     cursor: pointer;
@@ -146,8 +146,14 @@ button:not(:disabled), [type="button"]:not(:disabled), [type="reset"]:not(:disab
 }
 .bg-success, .alert-success, .bg-success>a, .alert-success>a {
     color: #ffffff!important;
-    background-color: #273443;
+    background-color: #195030;
 }
 .bg-success, .alert-success {
-    background-color: #273443!important;
+    background-color: #195030!important;
+}
+.card {
+    background-color: #195030;
+    background-clip: border-box;
+    border: 0 solid #195030;
+    border-radius: .25rem;
 }
