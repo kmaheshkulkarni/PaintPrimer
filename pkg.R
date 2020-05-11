@@ -23,7 +23,7 @@ library(viridis)
 library(corrly)
 library(bs4Dash)
 library(shinyWidgets)
-library(grillade)
+# library(grillade)
 library(echarts4r)
 
 # packrat::set_opts("external.packages" = "corrly")
