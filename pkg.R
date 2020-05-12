@@ -25,5 +25,7 @@ library(bs4Dash)
 library(shinyWidgets)
 # library(grillade)
 library(echarts4r)
+library(RODBC)
+library(odbc)
 
 # packrat::set_opts("external.packages" = "corrly")

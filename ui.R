@@ -24,14 +24,14 @@ bs4DashPage(
   body = bs4DashBody(
               fluidRow(column(1)),
               fluidRow(
-                column(1),
                 column(2, pickerInput(
-                  inputId = "part",
+                  inputId = "part_desc",
                   label = "Select Part", 
                   choices = parameter_choices1,
                   options = list(
                     `live-search` = TRUE)
                 )),
+                # column(1, textInput("SurfaceTxt", label = "Surface Area in Sq.Ft", value = "")),
                 column(2, textInput("Edft", label = "Enter DFT in ml", value = "")),
                 column(2, textInput("TrnsfEfi", label = "Enter Transfer Efficiency", value = "")),
                 column(3, 
@@ -111,8 +111,9 @@ bs4DashPage(
                          bs4ValueBox(value = 200, subtitle = "Mean Actual Consumption", status = "warning",
                                      footer = "Unit in CC", icon = "database", width = 12)
                        ),
-                       fluidRow(bs4ValueBox(value = 200, subtitle = "Surface Area", status = "success",
-                                            footer = "Unit in SQ.Ft", icon = "database", width = 12))
+                       fluidRow(bs4ValueBoxOutput(outputId = "SurfaceArea", width = 12))
+                       # fluidRow(bs4ValueBox(value = 200, subtitle = "Surface Area", status = "success",
+                       #                      footer = "Unit in SQ.Ft", icon = "database", width = 12))
                 )
                 
               )
