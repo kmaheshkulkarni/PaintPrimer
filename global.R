@@ -19,8 +19,8 @@ indi_data_con<-dbConnect(odbc::odbc(),
                          PWD = "re8jfd33"
 )
 
-# ############## Dubuque TrackSYS Database Connection Global #################
-
+# # ############## Dubuque TrackSYS Database Connection Global #################
+# 
 tx_traksys_con<-dbConnect(odbc::odbc(),
                           Driver="SQL Server",
                           Server ="fdubtxparsec1.jdnet.deere.com",
@@ -29,6 +29,15 @@ tx_traksys_con<-dbConnect(odbc::odbc(),
                           UID = "ATX0610",
                           PWD = "udufx669"
 )
+
+Theoretical<- function(SurfArea = NULL, DFT= NULL, TransfEffi = NULL){
+  surfDFT<- SurfArea * DFT
+  TransPer<- TransfEffi / 100
+  calc1 <- 829.17 * 3785.41
+  Theore1 <- surfDFT / calc1
+  Theorrtical<- Theore1 / TransPer
+  return(Theorrtical)
+}
 
 job_part<- read.csv("Data/job_vs_part.csv")
 # TEvent <- dbGetQuery(tx_traksys_con, "SELECT * from tEvent")

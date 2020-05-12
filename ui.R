@@ -25,11 +25,19 @@ bs4DashPage(
               fluidRow(column(1)),
               fluidRow(
                 column(2, pickerInput(
+                  inputId = "action_gun_select1",
+                  label = "Select Booth",
+                  choices = c("LBH Prime Booth"=505,
+                              "LBH Topcoat Booth"=506,
+                              "LBH Touchup Booth"=507
+                  ),
+                  options = list(`live-search` = TRUE)
+                )),
+                column(2, pickerInput(
                   inputId = "part_desc",
                   label = "Select Part", 
                   choices = parameter_choices1,
-                  options = list(
-                    `live-search` = TRUE)
+                  options = list(`live-search` = TRUE)
                 )),
                 # column(1, textInput("SurfaceTxt", label = "Surface Area in Sq.Ft", value = "")),
                 column(2, textInput("Edft", label = "Enter DFT in ml", value = "")),
@@ -96,7 +104,8 @@ bs4DashPage(
                          closable = FALSE,
                          maximizable = TRUE, 
                          collapsible = TRUE,
-                         height = "600px"
+                         height = "600px",
+                         plotlyOutput("spc_plot")%>% withSpinner(color="#0dc5c1")
                        )
                 ),
                 column(4,
