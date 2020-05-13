@@ -11,7 +11,7 @@ source("pkg.R")
 ###################  INDAIATUBA_ELEMENTS_Local #############################
 # 
 indi_data_con<-dbConnect(odbc::odbc(),
-                         Driver="SQL Server",
+                         Driver="SQLServer",
                          Server ="FINDBZSQL1.jdnet.deere.com",
                          Database = "BZ_PAAP",
                          port ="1433",
@@ -22,7 +22,7 @@ indi_data_con<-dbConnect(odbc::odbc(),
 # # ############## Dubuque TrackSYS Database Connection Global #################
 # 
 tx_traksys_con<-dbConnect(odbc::odbc(),
-                          Driver="SQL Server",
+                          Driver="SQLServer",
                           Server ="fdubtxparsec1.jdnet.deere.com",
                           Database = "EDB_TX01",
                           port ="1433",

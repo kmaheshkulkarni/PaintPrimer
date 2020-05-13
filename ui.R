@@ -9,7 +9,7 @@ bs4DashPage(
                          skin = "dark",
                          controlbarIcon = NULL,
                          fixed = TRUE,
-                         leftUi = tagList(span(class = "logo-lg"),img(src = "logo.png", height= 63,
+                         leftUi = tagList(span(class = "logo-lg"),img(src = "logo.png", height= 40,
                                                                       style = 'margin-left: -40px; margin-top: -1px;')),
                          rightUi = bs4UserMenu(
                            src = "Prilogo.png", 
@@ -107,7 +107,7 @@ bs4DashPage(
   ),
   footer = bs4DashFooter(
     fixed = TRUE,
-    copyrights = tagList(span(class = "logo-lg"),img(src = "prilogo.png", height= 57, 
+    copyrights = tagList(span(class = "logo-lg"),img(src = "Prilogo.png", height= 57, 
     style = 'vertical-align: initial;height: 65px;margin-left: -1px;margin-top: -2px;margin-bottom: -5px;')),
     right_text = tagList(span(class = "logo-lg"),img(src = "green.png", height= 63, style = 'vertical-align: initial;'))
       
