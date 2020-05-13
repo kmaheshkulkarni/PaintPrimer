@@ -24,7 +24,7 @@ bs4DashPage(
   body = bs4DashBody(
               fluidRow(column(1)),
               fluidRow(
-                column(2, pickerInput(
+                column(1, pickerInput(
                   inputId = "action_gun_select1",
                   label = "Select Booth",
                   choices = c("LBH Prime Booth"=505,
@@ -40,8 +40,8 @@ bs4DashPage(
                   options = list(`live-search` = TRUE)
                 )),
                 # column(1, textInput("SurfaceTxt", label = "Surface Area in Sq.Ft", value = "")),
-                column(2, textInput("Edft", label = "Enter DFT in ml", value = "")),
-                column(2, textInput("TrnsfEfi", label = "Enter Transfer Efficiency", value = "")),
+                column(2, textInput("Edft", label = "Enter DFT in mil", value = "")),
+                column(2, textInput("TrnsfEfi", label = "Enter Transfer Efficiency in %", value = "")),
                 column(3, 
                        align="center",
                        dateRangeInput("TheDate","Select Date Range",
@@ -58,40 +58,11 @@ bs4DashPage(
                 ))      
               ),
               fluidRow(
-                column(12, 
-                       fluidRow(
-                         bs4Card(
-                           title = "Actual Paint in CC", 
-                           width = 4,
-                           status = "danger", 
-                           closable = FALSE,
-                           maximizable = TRUE, 
-                           collapsible = FALSE,
-                           echarts4rOutput("ActPaint")
-                         ),
-                         bs4Card(
-                           title = "Theoretical Paint in CC", 
-                           width = 4,
-                           status = "danger", 
-                           closable = FALSE,
-                           maximizable = TRUE, 
-                           collapsible = FALSE,
-                           echarts4rOutput("TheoPaint", width = "400px")
-                         ),
-                         bs4Card(
-                           title = "Delta in CC", 
-                           width = 4,
-                           status = "danger", 
-                           closable = FALSE,
-                           maximizable = TRUE, 
-                           collapsible = FALSE,
-                           echarts4rOutput("Delta")
-                         )
-                         # column(4, echarts4rOutput("ActPaint", width = "400px")),
-                         # column(4, echarts4rOutput("TheoPaint", width = "400px")),
-                         # column(4, echarts4rOutput("Delta", width = "400px"))
-                       )
-                       )
+               column(4,echarts4rOutput("TheoPaint")%>% withSpinner(color="#ffc107")),
+               
+               column(4,echarts4rOutput("ActPaint")%>% withSpinner(color="#ffc107")),
+               
+               column(4,echarts4rOutput("Delta") %>% withSpinner(color="#ffc107"))
                 ),
               
               fluidRow(
@@ -104,23 +75,23 @@ bs4DashPage(
                          closable = FALSE,
                          maximizable = TRUE, 
                          collapsible = TRUE,
-                         height = "600px",
-                         plotlyOutput("spc_plot")%>% withSpinner(color="#0dc5c1")
+                         height = "650px",
+                         plotlyOutput("spc_plot", height = "550px")%>% withSpinner(color="#ffc107")
                        )
                 ),
                 column(4,
                        fluidRow(
-                         bs4ValueBox(value = 200, subtitle = "UCL", status = "warning",
-                                     footer = "Unit in CC", icon = "database", width = 12)
+                         bs4ValueBoxOutput(outputId = "USLV", width = 12)
                        ),
                        fluidRow(
-                         bs4ValueBox(value = 121, subtitle = "LCL", status = "success",
-                                     footer = "Unit in CC", icon = "database", width = 12)),
+                         bs4ValueBoxOutput(outputId = "LSLV", width = 12)
+                         ),
                        fluidRow(
-                         bs4ValueBox(value = 200, subtitle = "Mean Actual Consumption", status = "warning",
-                                     footer = "Unit in CC", icon = "database", width = 12)
+                         bs4ValueBoxOutput(outputId = "MeanActConsm", width = 12)
                        ),
-                       fluidRow(bs4ValueBoxOutput(outputId = "SurfaceArea", width = 12))
+                       fluidRow(
+                         bs4ValueBoxOutput(outputId = "SurfaceArea", width = 12)
+                         )
                        # fluidRow(bs4ValueBox(value = 200, subtitle = "Surface Area", status = "success",
                        #                      footer = "Unit in SQ.Ft", icon = "database", width = 12))
                 )
@@ -136,9 +107,9 @@ bs4DashPage(
   ),
   footer = bs4DashFooter(
     fixed = TRUE,
-    copyrights = tagList(span(class = "logo-lg"),img(src = "prilogo.png", height= 68, 
+    copyrights = tagList(span(class = "logo-lg"),img(src = "prilogo.png", height= 57, 
     style = 'vertical-align: initial;height: 65px;margin-left: -1px;margin-top: -2px;margin-bottom: -5px;')),
-    right_text = tagList(span(class = "logo-lg"),img(src = "green.png", height= 63, style = 'vertical-align: initial;')),
+    right_text = tagList(span(class = "logo-lg"),img(src = "green.png", height= 63, style = 'vertical-align: initial;'))
       
       # tagList(span(class = "logo-lg"),img(src = "green.png", height= 63, style = 'vertical-align: initial;'))
   )

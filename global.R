@@ -31,10 +31,13 @@ tx_traksys_con<-dbConnect(odbc::odbc(),
 )
 
 Theoretical<- function(SurfArea = NULL, DFT= NULL, TransfEffi = NULL){
+  SurfArea<- as.numeric(SurfArea)
+  DFT<- as.numeric(DFT)
+  TransfEffi<- as.numeric(TransfEffi)
   surfDFT<- SurfArea * DFT
   TransPer<- TransfEffi / 100
-  calc1 <- 829.17 * 3785.41
-  Theore1 <- surfDFT / calc1
+  calc1 <- 829.17
+  Theore1 <- (surfDFT / calc1) * 3785.41
   Theorrtical<- Theore1 / TransPer
   return(Theorrtical)
 }

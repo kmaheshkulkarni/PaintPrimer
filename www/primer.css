@@ -12,56 +12,56 @@
 }
 .bootstrap-select .dropdown-toggle .filter-option-inner-inner {
     color: #195030;
-    background-color: #ffcf0d;
+    background-color: #ffc107;
 }
 .bootstrap-select>.dropdown-toggle {
-    background-color: #ffcf0d;
+    background-color: #ffc107;
     color: #195030;
-    border-color: #ffcf0d;
+    border-color: #ffc107;
 }
 .dropdown-menu.show {
     display: block;
-    background-color: #ffcf0d;
+    background-color: #ffc107;
     color: #195030;
 }
 .dropdown-item.active, .dropdown-item:active {
-    color: #ffcf0d;
+    color: #ffc107;
     text-decoration: none;
     background-color: #195030;
 }
 .bs-searchbox .form-control {
     background-color: #195030;
-    border-color: #ffcf0d;
-    color: #ffcf0d;
+    border-color: #ffc107;
+    color: #ffc107;
 }
 .btn-light:not(:disabled):not(.disabled):active, .btn-light:not(:disabled):not(.disabled).active, .show>.btn-light.dropdown-toggle {
     color: #195030;
-    background-color: #ffcf0d;
-    border-color: #ffcf0d;
+    background-color: #ffc107;
+    border-color: #ffc107;
 }
 .bootstrap-select .no-results {
-    background: #ffcf0d;
+    background: #ffc107;
     color: #195030;
 }
 .form-control {
     color: #195030;
-    background-color: #ffcf0d;
-    border: 1px solid #ffcf0d;
+    background-color: #ffc107;
+    border: 1px solid #ffc107;
 }
 .dropdown-menu {
-    color: #ffcf0d;
+    color: #ffc107;
     background-color: #195030;
     border: 1px solid #195030;
 }
 .datepicker table tr td.active.active, .datepicker table tr td.active.highlighted.active, .datepicker table tr td.active.highlighted:active, .datepicker table tr td.active:active {
     color: #195030;
-    background-color: #ffcf0d;
-    border-color: #ffcf0d;
+    background-color: #ffc107;
+    border-color: #ffc107;
 }
 .datepicker table tr td span.active.active, .datepicker table tr td span.active.disabled.active, .datepicker table tr td span.active.disabled:active, .datepicker table tr td span.active.disabled:hover.active, .datepicker table tr td span.active.disabled:hover:active, .datepicker table tr td span.active:active, .datepicker table tr td span.active:hover.active, .datepicker table tr td span.active:hover:active {
     color: #195030;
-    background-color: #ffcf0d;
-    border-color: #ffcf0d;
+    background-color: #ffc107;
+    border-color: #ffc107;
 }
 .input-daterange .input-group-addon {
     text-shadow: 0 1px 0 #195030;
@@ -69,15 +69,15 @@
     background-color: #195030;
 }
 label:not(.form-check-label):not(.custom-file-label) {
-    color: #ffcf0d;
+    color: #195030;
     margin-top: 25px;
 }
 navbar-dark .navbar-nav .nav-link {
-    color: #ffcf0d;
+    color: #ffc107;
     font-weight: 600;
 }
 .dropdown-menu {
-    border: 1px solid #ffcf0d;
+    border: 1px solid #ffc107;
 }
 .wrapper .content-wrapper {
     min-height: calc(100vh - calc(3.5rem + 1px) - calc(3.5rem + 1px));
@@ -85,15 +85,15 @@ navbar-dark .navbar-nav .nav-link {
 }
 button:not(:disabled), [type="button"]:not(:disabled), [type="reset"]:not(:disabled), [type="submit"]:not(:disabled) {
     cursor: pointer;
-    background-color: #ffcf0d;
+    background-color: #ffc107;
     color: #195030;
 }
 .bttn-fill.bttn-default:before {
     background: #195030;
-    color: #ffcf0d;
+    color: #ffc107;
 }
 .bttn-fill.bttn-default {
-    background: #ffcf0d;
+    background: #ffc107;
     margin-top: 49px;
 }
 .small-box>.inner {
@@ -106,7 +106,7 @@ button:not(:disabled), [type="button"]:not(:disabled), [type="reset"]:not(:disab
     font-size: large;
 }
 .card-danger:not(.card-outline)>.card-header {
-    background-color: #ffcf0d;
+    background-color: #ffc107;
     border-bottom: 0;
 }
 .navbar-nav>.user-menu>.dropdown-menu>.user-body {
@@ -125,7 +125,7 @@ button:not(:disabled), [type="button"]:not(:disabled), [type="reset"]:not(:disab
     margin-top: -13px;
 }
 .bg-danger .btn-tool, .alert-danger .btn-tool, .alert-error .btn-tool, .bg-gradient-danger .btn-tool, .card-danger:not(.card-outline) .btn-tool {
-    color: #ffcf0d;
+    color: #ffc107;
     background-color: #195030;
 }
 .card-title {
@@ -139,8 +139,8 @@ button:not(:disabled), [type="button"]:not(:disabled), [type="reset"]:not(:disab
     margin-top: -80px;
 }
 .main-footer {
-    background: #ffcf0d;
-    border-top: 1px solid #ffcf0d;
+    background: #ffc107;
+    border-top: 1px solid #ffc107;
     color: #869099;
     padding: 0.05rem;
 }
@@ -156,4 +156,8 @@ button:not(:disabled), [type="button"]:not(:disabled), [type="reset"]:not(:disab
     background-clip: border-box;
     border: 0 solid #195030;
     border-radius: .25rem;
+}
+.shiny-spinner-output-container {
+    position: relative;
+    margin-top: 70px;
 }
