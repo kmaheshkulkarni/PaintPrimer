@@ -120,7 +120,7 @@ function(input, output, session){
             value <- round(TheDelta, 2)
             print("TheDelta")
             print(value)
-            liquid <- data.frame(name= c(value, 0.5, 0.4, 0.2), color = c("#ffc117", "#195030"))
+            liquid <- data.frame(name= c(value, 0.5, 0.4, 0.2), color = c("#ffc107", "#195030"))
             liquid %>% 
               e_charts() %>% 
               e_liquid(
