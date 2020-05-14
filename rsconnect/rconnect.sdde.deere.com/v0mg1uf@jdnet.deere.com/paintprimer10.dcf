@@ -5,8 +5,8 @@ account: v0mg1uf@jdnet.deere.com
 server: rconnect.sdde.deere.com
 hostUrl: https://rconnect.sdde.deere.com/__api__
 appId: 424
-bundleId: 2010
+bundleId: 2011
 url: https://rconnect.sdde.deere.com/content/424/
-when: 1589390610.37271
+when: 1589391014.54583
 asMultiple: FALSE
 asStatic: FALSE

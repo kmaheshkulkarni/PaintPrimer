@@ -27,7 +27,7 @@ bs4DashPage(
                 column(1, pickerInput(
                   inputId = "action_gun_select1",
                   label = "Select Booth",
-                  choices = c("LBH Prime Booth"=505,
+                  choices = c("LBH Primer Booth"=505,
                               "LBH Topcoat Booth"=506,
                               "LBH Touchup Booth"=507
                   ),
@@ -58,12 +58,18 @@ bs4DashPage(
                 ))      
               ),
               fluidRow(
-               column(4,echarts4rOutput("TheoPaint")%>% withSpinner(color="#ffc107")),
-               
-               column(4,echarts4rOutput("ActPaint")%>% withSpinner(color="#ffc107")),
-               
-               column(4,echarts4rOutput("Delta") %>% withSpinner(color="#ffc107"))
-                ),
+              bs4Card(
+                title = "Paint Volume Analytics (Units in CC)", width = 12, status = "danger",
+                closable = FALSE, maximizable = TRUE, collapsible = FALSE, height = "500px",
+                fluidRow(
+                  column(4,h2("Theoretical Paint Consumption"), echarts4rOutput("TheoPaint") %>% withSpinner(color="#ffc107")),
+                  
+                  column(4,h2("Actual Paint Consumption"), echarts4rOutput("ActPaint") %>% withSpinner(color="#ffc107")),
+                  
+                  column(4,h2("Delta Paint Consumption"), echarts4rOutput("Delta") %>% withSpinner(color="#ffc107"))
+                )
+              )
+            ),
               
               fluidRow(
                 column(8,

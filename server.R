@@ -100,11 +100,14 @@ function(input, output, session){
               e_liquid(
                 serie = name, 
                 color = color,
+                outline= (
+                  show= FALSE
+                ),
                 label = list(
+                  fontSize = 35,
                   formatter = "{c}"
                 )
               )%>%
-              e_title("Theoretical Paint Consumption", "Paint Volume in CC") %>%
               e_grid(width = "100%", left = "70%")
           })
           
@@ -120,18 +123,42 @@ function(input, output, session){
             value <- round(TheDelta, 2)
             print("TheDelta")
             print(value)
-            liquid <- data.frame(name= c(value, 0.5, 0.4, 0.2), color = c("#ffc107", "#195030"))
-            liquid %>% 
-              e_charts() %>% 
-              e_liquid(
-                serie = name, 
-                color = color,
-                label = list(
-                  formatter = "{c}"
-                )
-              ) %>%
-              e_title("Delta Paint Consumption", "Paint Volume in CC")%>%
-              e_grid(width = "100%", left = "70%")
+            
+            if(value <= 0){
+              liquid <- data.frame(name= c(value, 0.5, 0.4, 0.2), color = c("#000000", "#ff0000"))
+              liquid %>% 
+                e_charts() %>% 
+                e_liquid(
+                  serie = name, 
+                  color = color,
+                  outline= (
+                    show= FALSE
+                  ),
+                  label = list(
+                    fontSize = 35,
+                    formatter = "{c}"
+                  )
+                ) %>%
+                e_grid(width = "100%", left = "70%")
+            } else{
+              liquid <- data.frame(name= c(value, 0.5, 0.4, 0.2), color = c("#ffc107", "#195030"))
+              liquid %>% 
+                e_charts() %>% 
+                e_liquid(
+                  serie = name, 
+                  color = color,
+                  outline= (
+                    show= FALSE
+                  ),
+                  label = list(
+                    fontSize = 35,
+                    formatter = "{c}"
+                  )
+                ) %>%
+                e_grid(width = "100%", left = "70%")
+            }
+            
+            
           })
         })
         
@@ -147,11 +174,14 @@ function(input, output, session){
             e_liquid(
               serie = name, 
               color = color,
+              outline= (
+                show= FALSE
+              ),
               label = list(
+                fontSize = 35,
                 formatter = "{c}"
               )
             ) %>%
-            e_title("Actual Paint Consumption", "Paint Volume in CC")%>%
             e_grid(width = "100%", left = "70%")
         })
       }

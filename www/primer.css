@@ -109,6 +109,10 @@ button:not(:disabled), [type="button"]:not(:disabled), [type="reset"]:not(:disab
     background-color: #ffc107;
     border-bottom: 0;
 }
+.card-success:not(.card-outline)>.card-header {
+    background-color: #195030;
+    border-bottom: 0;
+}
 .navbar-nav>.user-menu>.dropdown-menu>.user-body {
     border-bottom: 1px solid #ffc107;
     border-top: 1px solid #ffc107;
@@ -127,6 +131,10 @@ button:not(:disabled), [type="button"]:not(:disabled), [type="reset"]:not(:disab
 .bg-danger .btn-tool, .alert-danger .btn-tool, .alert-error .btn-tool, .bg-gradient-danger .btn-tool, .card-danger:not(.card-outline) .btn-tool {
     color: #ffc107;
     background-color: #195030;
+}
+.bg-success .btn-tool, .alert-success .btn-tool, .alert-error .btn-tool, .bg-gradient-success .btn-tool, .card-success:not(.card-outline) .btn-tool {
+    color: #195030;
+    background-color: #ffc107;
 }
 .card-title {
     font-size: larger;
@@ -160,4 +168,12 @@ button:not(:disabled), [type="button"]:not(:disabled), [type="reset"]:not(:disab
 .shiny-spinner-output-container {
     position: relative;
     margin-top: 70px;
+}
+h2, .h2 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 75px;
+    margin-left: 45px;
+    margin-bottom: -90px;
+    color: #ffc107;
 }
