@@ -1,0 +1,86 @@
+---
+title: "REPORT"
+date: '`r format(Sys.Date(), "%Y-%B-%d")`'
+output:
+  flexdashboard::flex_dashboard:
+       orientation: rows
+       theme: darkly
+runtime: shiny
+---
+```{r setup, include=FALSE}
+library(flexdashboard)
+```
+
+Paint Dashboard {data-icon="fa-globe"}
+=============================
+
+ROW {data-height=800}
+-------------------------------------
+
+### Actual Paint Consumption (Units in CC) 
+```{r echo=FALSE}
+params[["AP"]]
+```
+
+
+### Delta Paint Consumption (Units in CC)
+```{r echo=FALSE}
+params[["DelPlot"]]
+```
+
+
+### Delta Paint Consumption (Units in CC)
+```{r echo=FALSE}
+params[["TheoPaintPlot"]]
+```
+
+
+ROW {data-height=300}
+-------------------------------------
+
+### Surface Area
+```{r echo=FALSE}
+params[["surft"]]
+gauge(surft, min = 0, max = 4000, symbol = 'CC', gaugeSectors(
+  success = c(0, 1000), warning = c(1001, 2000), danger = c(2001, 4000)
+))
+```
+
+
+### Mean Actual Paint Consumption
+```{r echo=FALSE}
+params[["meanap"]]
+gauge(meanap, min = 0, max = 4000, symbol = 'CC', gaugeSectors(
+  success = c(0, 1000), warning = c(1001, 2000), danger = c(2001, 4000)
+))
+```
+
+SPC Analytics {data-icon="fa-globe"}
+=============================
+
+Row {data-height=800}
+-------------------------------------
+
+### SPC Chart
+```{r echo=FALSE}
+params[["spcplot"]]
+```
+
+ROW {data-height=300}
+-------------------------------------
+
+### USL
+```{r echo=FALSE}
+params[["USL"]]
+gauge(USL, min = 0, max = 6000, symbol = 'CC', gaugeSectors(
+  success = c(0, 1000), warning = c(1001, 4000), danger = c(4001, 6000)
+))
+```
+
+### LSL
+```{r echo=FALSE}
+params[["LSL"]]
+gauge(LSL, min = 0, max = 4000, symbol = 'CC', gaugeSectors(
+  success = c(0, 100), warning = c(1001, 2000), danger = c(2001, 4000)
+))
+```

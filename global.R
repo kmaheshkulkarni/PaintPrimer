@@ -11,7 +11,7 @@ source("pkg.R")
 ###################  INDAIATUBA_ELEMENTS_Local #############################
 # 
 indi_data_con<-dbConnect(odbc::odbc(),
-                         Driver="SQLServer",
+                         Driver="SQL Server",
                          Server ="FINDBZSQL1.jdnet.deere.com",
                          Database = "BZ_PAAP",
                          port ="1433",
@@ -22,12 +22,22 @@ indi_data_con<-dbConnect(odbc::odbc(),
 # # ############## Dubuque TrackSYS Database Connection Global #################
 # 
 tx_traksys_con<-dbConnect(odbc::odbc(),
-                          Driver="SQLServer",
+                          Driver="SQL Server",
                           Server ="fdubtxparsec1.jdnet.deere.com",
                           Database = "EDB_TX01",
                           port ="1433",
                           UID = "ATX0610",
                           PWD = "udufx669"
+)
+
+teda_data_con<-dbConnect(
+  odbc::odbc(),
+  Driver="SQL Server",
+  Server ="GFTIASQL1",
+  Database = "TEDA_PAAP",
+  port ="1434",
+  UID = "tcw",
+  PWD = "Paint_tcw%456"
 )
 
 Theoretical<- function(SurfArea = NULL, DFT= NULL, TransfEffi = NULL){

@@ -40,8 +40,8 @@ bs4DashPage(
                   options = list(`live-search` = TRUE)
                 )),
                 # column(1, textInput("SurfaceTxt", label = "Surface Area in Sq.Ft", value = "")),
-                column(2, textInput("Edft", label = "Enter DFT in mil", value = "")),
-                column(2, textInput("TrnsfEfi", label = "Enter Transfer Efficiency in %", value = "")),
+                column(1, textInput("Edft", label = "DFT in mil", value = "")),
+                column(2, textInput("TrnsfEfi", label = "Transfer Efficiency in %", value = "")),
                 column(3, 
                        align="center",
                        dateRangeInput("TheDate","Select Date Range",
@@ -51,11 +51,18 @@ bs4DashPage(
                                       format = "yyyy-mm-dd",width = "80%"
                        )
                 ),
-                column(2, align= "center", actionBttn(
+                column(1.5, align= "center", actionBttn(
                   inputId = "Getinsights",
                   label = "Get Insights",
                   style = "fill"
-                ))      
+                )),
+                column(1.5, align = "center",
+                downloadButton('FlexD', label = " Get Report"))
+                # column(1, align= "center", actionBttn(
+                #   inputId = "reports",
+                #   label = "Report",
+                #   style = "fill"
+                # )) 
               ),
               fluidRow(
               bs4Card(

@@ -46,130 +46,57 @@ function(input, output, session){
         print("spc_data")
         print(spc_data)
         # spc_csv<- write.csv(spc_data, file = "Data/spc.csv")
-        meanap<- round(mean(spc_data$paintDiv), 2)
+        meanap<<- round(mean(spc_data$paintDiv), 2)
         print("meanap")
         print(meanap)
-        
+        IChart<- ichart_ly(spc_data, x = spc_data$Date_of_Paint, y = spc_data$paintDiv, 
+                             xname = "Date", yname = "Paint Volume in CC")
         output$spc_plot<-renderPlotly({
-          ichart_ly(spc_data, x = spc_data$Date_of_Paint, y = spc_data$paintDiv, xname = "Date", yname = "Paint Volume in CC")
+          IChart
         })
         
+        MeanActConsmBox<- bs4ValueBox(value = meanap, subtitle = "Mean Actual Consumption", status = "warning",
+                                      footer = "Unit in CC", icon = "database", width = 12)
         output$MeanActConsm<- renderbs4ValueBox(
-          bs4ValueBox(value = meanap, subtitle = "Mean Actual Consumption", status = "warning",
-                      footer = "Unit in CC", icon = "database", width = 12)
+          MeanActConsmBox
         )
         
         
         UTransfer<- Theoretical(SurfArea = surft, DFT = 2.5, TransfEffi = 100)
         print(UTransfer)
         UTFr<- round(UTransfer,2)
-        USL <- as.numeric(UTFr)
-        
+        USL <<- as.numeric(UTFr)
+        USLBox<- bs4ValueBox(value = USL, subtitle = "USL", status = "warning",
+                             footer = "Unit in CC", icon = "database", width = 12)
         output$USLV<- renderbs4ValueBox(
-          bs4ValueBox(value = USL, subtitle = "USL", status = "warning",
-                      footer = "Unit in CC", icon = "database", width = 12)
+          USLBox
         )
         
         LTransfer<- Theoretical(SurfArea = surft, DFT = 1.5, TransfEffi = 100)
         print(LTransfer)
         LTFr<- round(LTransfer,2)
-        LSL <- as.numeric(LTFr)
-        
+        LSL <<- as.numeric(LTFr)
+        LSLBox<- bs4ValueBox(value = LSL, subtitle = "LSL", status = "success",
+                             footer = "Unit in CC", icon = "database", width = 12)
         output$LSLV<- renderbs4ValueBox(
-          bs4ValueBox(value = LSL, subtitle = "LSL", status = "success",
-                      footer = "Unit in CC", icon = "database", width = 12)
+          LSLBox
         )
         
         
         observeEvent(input$part_desc,{
           temp_data <- job_part[job_part$Job_Number == input$part_desc, ]
-          surft = setNames(as.numeric(temp_data$Surface_Area),temp_data$Surface_Area)
-          output$SurfaceArea<- renderbs4ValueBox(
-            bs4ValueBox(value = round(as.numeric(surft),2), subtitle = "Surface Area", status = "success",
-                        footer = "Unit in SQ.Ft", icon = "database", width = 12)
-          )
-          output$TheoPaint <- renderEcharts4r({
-            Transfer<- Theoretical(SurfArea = surft, DFT = input$Edft,TransfEffi = input$TrnsfEfi)
-            print(Transfer)
-            Transfer<- round(Transfer,2)
-            value <- as.numeric(Transfer)
-            liqival <- value
-            liquid <- data.frame(name= c(liqival, 0.5, 0.4, 0.2), color = c("#ffc107", "#195030"))
-            liquid %>% 
-              e_charts() %>% 
-              e_liquid(
-                serie = name, 
-                color = color,
-                outline= (
-                  show= FALSE
-                ),
-                label = list(
-                  fontSize = 35,
-                  formatter = "{c}"
-                )
-              )%>%
-              e_grid(width = "100%", left = "70%")
-          })
+          surft <- setNames(as.numeric(temp_data$Surface_Area),temp_data$Surface_Area)
+          surft <<- round(as.numeric(surft),2)
           
-          output$Delta <- renderEcharts4r({
-            Transfer<- Theoretical(SurfArea = surft, DFT = input$Edft, input$TrnsfEfi)
-            print(Transfer)
-            print("Transfer")
-            Transfer<- round(Transfer,2)
-            TheDelta<- mean(spc_data$paintDiv) - Transfer
-            TheDelta<- as.numeric(TheDelta)
-            print("TheDelta")
-            print(TheDelta)
-            value <- round(TheDelta, 2)
-            print("TheDelta")
-            print(value)
-            
-            if(value <= 0){
-              liquid <- data.frame(name= c(value, 0.5, 0.4, 0.2), color = c("#000000", "#ff0000"))
-              liquid %>% 
-                e_charts() %>% 
-                e_liquid(
-                  serie = name, 
-                  color = color,
-                  outline= (
-                    show= FALSE
-                  ),
-                  label = list(
-                    fontSize = 35,
-                    formatter = "{c}"
-                  )
-                ) %>%
-                e_grid(width = "100%", left = "70%")
-            } else{
-              liquid <- data.frame(name= c(value, 0.5, 0.4, 0.2), color = c("#ffc107", "#195030"))
-              liquid %>% 
-                e_charts() %>% 
-                e_liquid(
-                  serie = name, 
-                  color = color,
-                  outline= (
-                    show= FALSE
-                  ),
-                  label = list(
-                    fontSize = 35,
-                    formatter = "{c}"
-                  )
-                ) %>%
-                e_grid(width = "100%", left = "70%")
-            }
-            
-            
-          })
-        })
-        
-        output$ActPaint <- renderEcharts4r({
-          paint_v<- mean(spc_data$paintDiv)
-          paint_v<- round(as.numeric(paint_v), 2)
-          value<- paint_v
-          print("paint_v")
-          print(value)
-          liquid <- data.frame(name= c(value, 0.5, 0.4, 0.2), color = c("#ffc107", "#195030"))
-          liquid %>% 
+          ######################################## Theoretical Paint Plot ####################################
+          Transfer<- Theoretical(SurfArea = surft, DFT = input$Edft,TransfEffi = input$TrnsfEfi)
+          print("Transfer")
+          print(Transfer)
+          Transfer<<- round(Transfer,2)
+          value <- as.numeric(Transfer)
+          liqival <- round(Transfer,2)
+          Theoliquid <- data.frame(name= c(liqival, 0.5, 0.4, 0.2), color = c("#ffc107", "#195030"))
+          TheorPlot<<- Theoliquid %>% 
             e_charts() %>% 
             e_liquid(
               serie = name, 
@@ -180,12 +107,135 @@ function(input, output, session){
               label = list(
                 fontSize = 35,
                 formatter = "{c}"
-              )
-            ) %>%
-            e_grid(width = "100%", left = "70%")
+              ),
+              radius = "90%"
+            )
+          
+          output$TheoPaint <- renderEcharts4r({
+            TheorPlot
+          })
+          
+          ######################### Delta Plot #######################
+          # Transfer<- Theoretical(SurfArea = surft, DFT = input$Edft,TransfEffi = input$TrnsfEfi)
+          
+          # Transfer<- round(Transfer,2)
+          TheDelta<- mean(spc_data$paintDiv) - Transfer
+          TheDelta<- as.numeric(TheDelta)
+          print("TheDelta")
+          print(TheDelta)
+          Deltavalue <- round(TheDelta, 2)
+          print("Deltavalue")
+          print(Deltavalue)
+          Redliquid <- data.frame(name= c(Deltavalue, 0.5, 0.4, 0.2), color = c("#000000", "#ff0000"))
+          print("RedLiquid")
+          print(Redliquid)
+          RedPlot<- Redliquid %>% 
+            e_charts() %>% 
+            e_liquid(
+              serie = name, 
+              color = color,
+              outline= (
+                show= FALSE
+              ),
+              label = list(
+                fontSize = 35,
+                formatter = "{c}"
+              ),
+              radius = "90%"
+            )
+          
+          Greenliquid <- data.frame(name= c(Deltavalue, 0.5, 0.4, 0.2), color = c("#ffc107", "#195030"))
+          
+          Greenplot<- Greenliquid %>% 
+            e_charts() %>% 
+            e_liquid(
+              serie = name, 
+              color = color,
+              outline= (
+                show= FALSE
+              ),
+              label = list(
+                fontSize = 35,
+                formatter = "{c}"
+              ),
+              radius = "90%"
+            )
+          
+          DeltaPlot<<-if(Deltavalue <= 0) RedPlot else Greenplot # ifelse(Deltavalue <= 0, "RedPlot", Greenplot)
+          DeltaPlot
+          output$Delta <- renderEcharts4r({
+            DeltaPlot
+          })
+          
+          
+        
         })
+        
+        
+        SurfBox<<- bs4ValueBox(value = round(as.numeric(surft),2), subtitle = "Surface Area", status = "success",
+                              footer = "Unit in SQ.Ft", icon = "database", width = 12)
+        output$SurfaceArea<- renderbs4ValueBox(
+          SurfBox
+        )
+        
+        
+        ######################### Act Point #######################
+        paint_v<- mean(spc_data$paintDiv)
+        paint_v<- as.numeric(paint_v)
+        APvalue<- paint_v 
+        APvalue<- round(APvalue, 2)
+        print("APvalue")
+        print(APvalue)
+        liquid <- data.frame(name= c(APvalue, 0.5, 0.4, 0.2), color = c("#ffc107", "#195030"))
+        
+        ActPlot<<- liquid %>% 
+          e_charts() %>% 
+          e_liquid(
+            serie = name, 
+            color = color,
+            outline= (
+              show= FALSE
+            ),
+            label = list(
+              fontSize = 35,
+              formatter = "{c}"
+            ),
+            radius = "90%"
+          ) 
+        
+        output$ActPaint <- renderEcharts4r({
+          ActPlot
+        })
+        
+        output$FlexD <- downloadHandler(
+          filename = function(){
+            paste('Report-', Sys.time(), '.html', sep = '')
+          },
+          content = function(file) {
+            params <- list(AP= ActPlot, DelPlot = DeltaPlot, TheoPaintPlot = TheorPlot, SurfaceAreaBox = surft, 
+                           LSLVBox = LSL , USLVBox = USL, MeanActConsmVBox= meanap, spcplot = IChart)
+            src <- normalizePath('FlexD.Rmd')
+            owd <- setwd(tempdir())
+            on.exit(setwd(owd))
+            file.copy(src, 'FlexD.Rmd', overwrite = TRUE)
+            out <- rmarkdown::render('FlexD.Rmd', output_format = flexdashboard::flex_dashboard())
+            file.rename(out, file)
+          }
+        )
       }
     }
   }
   )
+  
+  # observeEvent(input$reports,{
+  #   if(is.null(input$reports)||input$reports==0)
+  #   {
+  #     returnValue()
+  #   }
+  #   else
+  #   {
+      
+  #   }
+  # }
+  # )
 }

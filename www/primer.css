@@ -177,3 +177,11 @@ h2, .h2 {
     margin-bottom: -90px;
     color: #ffc107;
 }
+
+.btn-default {
+    background-color: #ffc107;
+    border-color: #ffc107;
+    color: #195030;
+    margin-left: 15px;
+    margin-top: 48px;
+}
