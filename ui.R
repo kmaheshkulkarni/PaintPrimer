@@ -27,8 +27,9 @@ bs4DashPage(
                                   # textInput("to", "To:", value="@gmail.com"),
                                   # textInput("subject", "Subject:", value="Todays Report"),
                                   # aceEditor("message", value="write message here"),
-                                  shinyFilesButton('files', label='Get File', title='Please select a file',
-                                                  icon = "mail-bulk", multiple=TRUE),
+                                  # shinyFilesButton('files', label='Get File', title='Please select a file',
+                                  #                 icon = icon("mail-bulk"), multiple=TRUE),
+                                  shinyFilesButton("file", "File select", "Please select a file", multiple = TRUE),
                                   actionBttn(
                                     inputId = "smail",
                                     label = "Send",

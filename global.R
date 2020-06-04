@@ -5,20 +5,13 @@ source("pkg.R")
 # #01111D (Background Color)
 # #1DA1F2 
 
-# create_smtp_creds_file(file = "email_creds",
-#                        user = "vmk80555@outlook.com",
-#                        provider = "office365",
-#                        host = "smtp.office365.com",
-#                        port = 587,
-#                        use_ssl = TRUE)
-
 # .libPaths( c( "C:/Program Files/R/R-4.0.0/library" , .libPaths() ) )
 # remotes::install_github("dreamRs/grillade")
 
 ###################  INDAIATUBA_ELEMENTS_Local #############################
 # 
 indi_data_con<-dbConnect(odbc::odbc(),
-                         Driver="SQL Server",
+                         Driver="SQLServer",
                          Server ="FINDBZSQL1.jdnet.deere.com",
                          Database = "BZ_PAAP",
                          port ="1433",
@@ -29,22 +22,12 @@ indi_data_con<-dbConnect(odbc::odbc(),
 # # ############## Dubuque TrackSYS Database Connection Global #################
 # 
 tx_traksys_con<-dbConnect(odbc::odbc(),
-                          Driver="SQL Server",
+                          Driver="SQLServer",
                           Server ="fdubtxparsec1.jdnet.deere.com",
                           Database = "EDB_TX01",
                           port ="1433",
                           UID = "ATX0610",
                           PWD = "udufx669"
-)
-
-teda_data_con<-dbConnect(
-  odbc::odbc(),
-  Driver="SQL Server",
-  Server ="GFTIASQL1",
-  Database = "TEDA_PAAP",
-  port ="1434",
-  UID = "tcw",
-  PWD = "Paint_tcw%456"
 )
 
 Theoretical<- function(SurfArea = NULL, DFT= NULL, TransfEffi = NULL){

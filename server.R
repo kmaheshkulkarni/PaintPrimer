@@ -228,6 +228,7 @@ function(input, output, session){
     }
   }
   )
+  
   volumes <- c(Home = fs::path_home(), "R Installation" = R.home(), getVolumes()())
   shinyFileChoose(input, "file", roots = volumes, session = session)
   observe({
@@ -244,10 +245,11 @@ function(input, output, session){
     else
     {
       
-      
-      path <- parseFilePaths(volumes, input$file)
       # tryCatch(
       #   {
+      
+      path <- parseFilePaths(volumes, input$file)
+      
       date_time <- add_readable_time()
       
       email <- compose_email(body = md("Hi Team
@@ -258,8 +260,6 @@ function(input, output, session){
       print("Email Msg")
       print(email)
       
-      file<- path
-      path <- parseFilePaths(volumes, input$file)
       attach<- add_attachment(
         email = email,
         file = path$datapath,

@@ -21,8 +21,8 @@
 }
 .dropdown-menu.show {
     display: block;
-    background-color: #ffc107;
-    color: #195030;
+    background-color: #195030;
+    color: #ffc107;
 }
 .dropdown-item.active, .dropdown-item:active {
     color: #ffc107;
@@ -178,14 +178,6 @@ h2, .h2 {
     margin-bottom: -90px;
     color: #ffc107;
 }
-
-.btn-default {
-    background-color: #ffc107;
-    border-color: #ffc107;
-    color: #195030;
-    margin-left: 15px;
-    margin-top: 48px;
-}
 .bootstrap-select>.dropdown-toggle {
     background-color: #ffc107;
     color: #195030;
@@ -198,4 +190,28 @@ h2, .h2 {
     padding: 5px 12px;
     margin-left: -10px;
     margin-right: -580px;
+}
+.btn.btn-circle-sm {
+    width: 130px;
+    height: 37px;
+    text-align: center;
+    font-size: 20px;
+    line-height: 50%;
+    border-radius: 2px;
+}
+.btn-default {
+    background-color: #ffc107;
+    border-color: #ffc107;
+    color: #195030;
+    margin-left: 5px;
+    margin-top: 1px;
+}
+.sF-breadcrumps {
+    width: calc(100% - 740px);
+    margin-left: auto;
+    min-width: 120px;
+}
+.btn-toolbar .sF-breadcrumps {
+    margin-left: 5px;
+    float: left;
 }
