@@ -209,33 +209,91 @@ function(input, output, session){
         
         output$FlexD <- downloadHandler(
           filename = function(){
-            paste('Report-', Sys.time(), '.html', sep = '')
+            paste('Report', Sys.time(), '.html', sep = '')
           },
           content = function(file) {
             params <- list(AP= ActPlot, DelPlot = DeltaPlot, TheoPaintPlot = TheorPlot, SurfaceAreaBox = surft, 
                            LSLVBox = LSL , USLVBox = USL, MeanActConsmVBox= meanap, spcplot = IChart)
             src <- normalizePath('FlexD.Rmd')
-            owd <- setwd(tempdir())
+            owd <- setwd('Report')
             on.exit(setwd(owd))
             file.copy(src, 'FlexD.Rmd', overwrite = TRUE)
-            out <- rmarkdown::render('FlexD.Rmd', output_format = flexdashboard::flex_dashboard())
+            out <- rmarkdown::render('FlexD.Rmd', output_format = flexdashboard::flex_dashboard(),
+                                     output_dir = "~/Report")
             file.rename(out, file)
+            # Get a nicely formatted date/time string
           }
         )
       }
     }
   }
   )
+  volumes <- c(Home = fs::path_home(), "R Installation" = R.home(), getVolumes()())
+  shinyFileChoose(input, "file", roots = volumes, session = session)
+  observe({
+    cat("\ninput$file value:\n\n")
+    path <- parseFilePaths(volumes, input$file)
+    print( path$name)
+  })
   
-  # observeEvent(input$reports,{
-  #   if(is.null(input$reports)||input$reports==0)
-  #   {
-  #     returnValue()
-  #   }
-  #   else
-  #   {
+  observeEvent(input$smail,{
+    if(is.null(input$smail)||input$smail==0)
+    {
+      returnValue()
+    }
+    else
+    {
       
-  #   }
-  # }
-  # )
+      
+      path <- parseFilePaths(volumes, input$file)
+      # tryCatch(
+      #   {
+      date_time <- add_readable_time()
+      
+      email <- compose_email(body = md("Hi Team
+                                       PFA"), 
+                             footer = md(c("Email sent on ", date_time, "."))
+                             )
+      # setwd("../PaintPrimer")
+      print("Email Msg")
+      print(email)
+      
+      file<- path
+      path <- parseFilePaths(volumes, input$file)
+      attach<- add_attachment(
+        email = email,
+        file = path$datapath,
+        content_type = mime::guess_type(file),
+        filename = basename(file)
+      )
+      
+      
+      
+      # Sending email by SMTP using a credentials file
+      attach %>%
+        smtp_send(
+          to = "kulkarni.mahesh320@gmail.com",
+          from = "vmk80555@outlook.com",
+          subject ="Daily Report",
+          credentials = creds_file("email_creds")
+        )
+      
+      #   },
+      #   error = function(e){
+      #     shinyalert(
+      #       title = "Mail No Sent",closeOnEsc = TRUE,closeOnClickOutside = FALSE,html = TRUE,
+      #       type = "error",showConfirmButton = TRUE,showCancelButton = FALSE,confirmButtonText = "OK",
+      #       confirmButtonCol = "#ffc107",timer = 0,imageUrl = "",animation = TRUE
+      #     )
+      #   },
+      #   finally = shinyalert(
+      #     title = "Mail Successfully Sent",closeOnEsc = TRUE,closeOnClickOutside = FALSE,html = TRUE,
+      #     type = "success",showConfirmButton = TRUE,showCancelButton = FALSE,confirmButtonText = "OK",
+      #     confirmButtonCol = "#195030",timer = 0,imageUrl = "",animation = TRUE
+      #   )
+      # )
+      
+    }
+  }
+  )
 }

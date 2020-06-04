@@ -18,13 +18,36 @@ bs4DashPage(
                            subtitle = "Version 1.0",
                            status = "warning",
                            footer = NULL
+                         ),
+                         column(2, align = "center",
+                                downloadButton(outputId = 'FlexD', label = " Get Report")),
+                         
+                         column(2, align = "center",
+                                dropdownButton(
+                                  # textInput("to", "To:", value="@gmail.com"),
+                                  # textInput("subject", "Subject:", value="Todays Report"),
+                                  # aceEditor("message", value="write message here"),
+                                  shinyFilesButton('files', label='Get File', title='Please select a file',
+                                                  icon = "mail-bulk", multiple=TRUE),
+                                  actionBttn(
+                                    inputId = "smail",
+                                    label = "Send",
+                                    style = "fill"
+                                  ),
+                                  
+                                  inputId = "Mail",
+                                  label = "Send Mail",
+                                  status = "success",
+                                  size = "sm",
+                                  tooltip = tooltipOptions(title = "Click to see Mail inputs !"))
+                                
                          )
   ),
   sidebar = bs4DashSidebar(disable = TRUE),
   body = bs4DashBody(
               fluidRow(column(1)),
               fluidRow(
-                column(1, pickerInput(
+                column(2, pickerInput(
                   inputId = "action_gun_select1",
                   label = "Select Booth",
                   choices = c("LBH Primer Booth"=505,
@@ -51,15 +74,24 @@ bs4DashPage(
                                       format = "yyyy-mm-dd",width = "80%"
                        )
                 ),
-                column(1.5, align= "center", actionBttn(
+                column(2, align= "center", actionBttn(
                   inputId = "Getinsights",
                   label = "Get Insights",
                   style = "fill"
-                )),
-                column(1.5, align = "center",
-                downloadButton('FlexD', label = " Get Report"))
+                ))
+                # column(1, align = "center",
+                #        downloadButton('FlexD', label = " Get Report")),
+                # 
+                # column(1, align = "center",
+                #        actionBttn(
+                #          inputId = "Mail",
+                #          label = "Sent Mail",
+                #          style = "unite")
+                #        
+                # )
+                
                 # column(1, align= "center", actionBttn(
-                #   inputId = "reports",
+                #   inputId = "FlexD",
                 #   label = "Report",
                 #   style = "fill"
                 # )) 

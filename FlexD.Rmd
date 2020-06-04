@@ -4,7 +4,6 @@ date: '`r format(Sys.Date(), "%Y-%B-%d")`'
 output:
   flexdashboard::flex_dashboard:
        orientation: rows
-       theme: darkly
 runtime: shiny
 ---
 ```{r setup, include=FALSE}

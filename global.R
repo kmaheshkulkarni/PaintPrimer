@@ -5,6 +5,13 @@ source("pkg.R")
 # #01111D (Background Color)
 # #1DA1F2 
 
+# create_smtp_creds_file(file = "email_creds",
+#                        user = "vmk80555@outlook.com",
+#                        provider = "office365",
+#                        host = "smtp.office365.com",
+#                        port = 587,
+#                        use_ssl = TRUE)
+
 # .libPaths( c( "C:/Program Files/R/R-4.0.0/library" , .libPaths() ) )
 # remotes::install_github("dreamRs/grillade")
 

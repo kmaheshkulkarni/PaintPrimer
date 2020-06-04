@@ -1,0 +1,13 @@
+pre {
+    display: block;
+    padding: 0px;
+    margin: 0px;
+    font-size: 0px;
+    line-height: 1.42857143;
+    word-break: break-all;
+    word-wrap: break-word;
+    color: #ffffff;
+    background-color: #ffffff;
+    border: 0px solid #ffffff;
+    border-radius: 0;
+}

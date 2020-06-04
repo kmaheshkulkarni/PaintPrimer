@@ -47,6 +47,7 @@
     color: #195030;
     background-color: #ffc107;
     border: 1px solid #ffc107;
+    margin-left: -10px;
 }
 .dropdown-menu {
     color: #ffc107;
@@ -184,4 +185,17 @@ h2, .h2 {
     color: #195030;
     margin-left: 15px;
     margin-top: 48px;
+}
+.bootstrap-select>.dropdown-toggle {
+    background-color: #ffc107;
+    color: #195030;
+    border-color: #ffc107;
+    margin-left: -10px;
+}
+.bttn-material-flat.bttn-md {
+    font-size: 20px;
+    font-family: inherit;
+    padding: 5px 12px;
+    margin-left: -10px;
+    margin-right: -580px;
 }
